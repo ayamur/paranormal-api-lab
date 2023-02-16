@@ -6,7 +6,13 @@ module.exports = {
 
 const date = new Date()
 
-await queryInterface.bulkInsert('Cryptids', [{}])
+await queryInterface.bulkInsert('Cryptids', [{
+  names: 'Bell Witch',
+  yearDiscovered: 1817,
+  locationDiscovered: 'Tennessee',
+  createdAt: date,
+  updatedAt: date,
+}])
     /**
      * Add seed commands here.
      *
@@ -19,6 +25,9 @@ await queryInterface.bulkInsert('Cryptids', [{}])
   },
 
   async down (queryInterface, Sequelize) {
+
+await queryInterface.bulkDelete('Cryptids', null, {})
+
     /**
      * Add commands to revert seed here.
      *

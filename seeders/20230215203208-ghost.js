@@ -3,6 +3,10 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
+
+const date = new Date()
+
+await queryInterface.bulkInsert('Cryptids', [{}])
     /**
      * Add seed commands here.
      *

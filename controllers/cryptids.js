@@ -12,8 +12,20 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const cryptids = await Cryptid.findAll()
-    res.status(200).json(cryptids)
+    const cryptid = await Cryptid.findAll()
+    res.status(200).json(cryptid)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+const update = async (req, res) => {
+  try {
+    const cryptid = await Cryptid.update(
+      req.body,
+      { where: { id: req.params.id }, returning: true }
+    )
+    res.status(200).json(cryptid)
   } catch (error) {
     res.status(500).json(error)
   }
@@ -22,4 +34,5 @@ const index = async (req, res) => {
 module.exports = {
   create,
   index,
+  update,
 }

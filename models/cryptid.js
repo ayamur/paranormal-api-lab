@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => { //This line defines an anonymous fu
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) { //This line defines a static method called associate, which can define relationships between different models in your application. We’ll learn more about this feature in a later lesson, so don’t worry about it for now.
+    static associate(models) {
+
+      Cryptid.hasMany(models.Sighting, {
+        foreignKey: 'cryptidId',
+        as: 'sightings'
+      })
+
+      //This line defines a static method called associate, which can define relationships between different models in your application. We’ll learn more about this feature in a later lesson, so don’t worry about it for now.
       // define association here
     }
   }

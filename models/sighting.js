@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       references: {
         model: 'Cryptids',
-      key: 'id' 
-    }
-  },
+        key: 'id'
+      }
+    },
     dangerZone: {
       type: DataTypes.ENUM('Safe', 'Caution', 'Dangerous', 'Unknown'),
       defaultValue: 'Unknown'

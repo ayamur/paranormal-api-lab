@@ -6,7 +6,7 @@ const cors = require('cors')
 
 // import routers
 const indexRouter = require('./routes/index.js')
-const cryptidsRouter = require('./routes.cryptids.js')
+const cryptidsRouter = require('./routes/cryptids.js')
 
 // create the express app
 const app = express()

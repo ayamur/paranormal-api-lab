@@ -29,7 +29,7 @@ module.exports = {
         }
       },
       dangerZone: {
-        type: DataTypes.ENUM('Safe', 'Caution', 'Dangerous', 'Unknown'),
+        type: Sequelize.ENUM('Safe', 'Caution', 'Dangerous', 'Unknown'),
         defaultValue: 'Unknown'
       },
       createdAt: {

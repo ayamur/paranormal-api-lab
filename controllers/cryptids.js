@@ -39,11 +39,11 @@ const update = async (req, res) => {
     // Several fields can be updated at once with the set method,
     // but we will need to save() the instance afterwards.
 
-    const cat = await Cat.findByPk(req.params.id)
-    cat.set(req.body)
-    await cat.save()
+    const cat = await Cryptid.findByPk(req.params.id)
+    cryptid.set(req.body)
+    await cryptid.save()
 
-    res.status(200).json(cat)
+    res.status(200).json(cryptid)
   } catch (error) {
     res.status(500).json(error)
   }
@@ -61,6 +61,21 @@ const deleteCryptid = async (req, res) => {
     res.status(500).json(error)
   }
 }
+
+//! OR THIS OPTION
+/*
+const deleteCryptid = async (req, res) => {
+  try {
+    // We can also call destroy on an instance:
+    const cryptid = await Cryptid.findByPk(req.params.id)
+    await cryptid.destroy()
+    res.status(200).json(cryptid)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+*/
 
 module.exports = {
   create,

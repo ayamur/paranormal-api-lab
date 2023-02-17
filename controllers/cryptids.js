@@ -1,4 +1,4 @@
-const { Cryptid } = require('../models')
+const { Cryptid, Sighting } = require('../models')
 
 const create = async (req, res) => {
   try {
@@ -74,12 +74,23 @@ const deleteCryptid = async (req, res) => {
     res.status(500).json(error)
   }
 }
-
 */
+
+const addSighting = async (req, res) => {
+  try {
+    // Append a catId to req.body:
+    req.body.cryptidId = req.params.id
+    const sighting = await Sighting.create(req.body)
+    res.status(200).json(sighting)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 
 module.exports = {
   create,
   index,
   update,
-  delete: deleteCryptid
+  delete: deleteCryptid,
+  addSighting,
 }

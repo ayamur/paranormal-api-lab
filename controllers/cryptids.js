@@ -9,15 +9,29 @@ const create = async (req, res) => {
     res.status(500).json(error)
   }
 }
+//! Previous Index Code
+// const index = async (req, res) => {
+//   try {
+//     const cryptid = await Cryptid.findAll()
+//     res.status(200).json(cryptid)
+//   } catch (error) {
+//     res.status(500).json(error)
+//   }
+// }
+//! Refactored Index Code below to include sightings model
 
 const index = async (req, res) => {
   try {
-    const cryptid = await Cryptid.findAll()
-    res.status(200).json(cryptid)
+    const cryptids = await Cryptid.findAll({
+      include: [{ model: Sighting, as: "sightings" }],
+    })
+    res.status(200).json(cryptids)
   } catch (error) {
+    console.log(error)
     res.status(500).json(error)
   }
 }
+
 
 const update = async (req, res) => {
   try {

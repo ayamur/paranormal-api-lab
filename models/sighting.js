@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Sighting.belongsTo(models.Cryptid, {
+        foreignKey: 'cryptidId',
+      })
     }
   }
   Sighting.init({

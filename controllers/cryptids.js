@@ -50,8 +50,21 @@ const update = async (req, res) => {
 }
 */
 
+const deleteCryptid = async (req, res) => {
+  try {
+    // Calling destroy on the model will not return the deleted record!
+    const numberOfRowsRemoved = await Cryptid.destroy(
+      { where: { id: req.params.id } }
+    )
+    res.status(200).json(numberOfRowsRemoved) // Expected: 1
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
   update,
+  delete: deleteCryptid
 }
